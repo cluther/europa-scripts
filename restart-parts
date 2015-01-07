@@ -1,0 +1,25 @@
+#!/bin/sh
+
+SERVICES_TO_RESTART="
+Zope
+zenhub
+zeneventd
+zenjobs
+zenactiond
+"
+
+PREFIX="Restarting:"
+
+TOTAL=$(echo $SERVICES_TO_RESTART | wc -w)
+COUNTER=0
+
+for SERVICE_TO_RESTART in $SERVICES_TO_RESTART; do
+    COUNTER=$(expr $COUNTER + 1)
+
+    printf "[$COUNTER/$TOTAL] %10s | " $SERVICE_TO_RESTART
+    serviced service stop $SERVICE_TO_RESTART >/dev/null
+    printf "stopped"
+
+    serviced service start $SERVICE_TO_RESTART >/dev/null
+    printf ", started\n"
+done

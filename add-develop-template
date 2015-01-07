@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# Create and add a "Zenoss.develop" application template based on Zenoss.core,
+# but with all of the collector daemons configured for manual launch.
+
+zendev cd
+
+# Cleanup any previous attempt at building this application template.
+rm -Rf Zenoss.develop
+
+# Copy the Zenoss.core template.
+cp -R src/service/services/Zenoss.core Zenoss.develop
+
+# Change the description to "Zenoss Develop"
+sed -i 's/"Description": "Zenoss Core"/"Description": "Zenoss Develop"/' Zenoss.develop/service.json
+
+# Change all collector daemons' launch configuration to manual.
+sed -i 's/"Launch": "auto"/"Launch": "manual"/' Zenoss.develop/localhost/localhost/zen{command,jmx,modeler,perfsnmp,ping,process,python,status,syslog,trap}/service.json
+
+# Compile the Zenoss.develop template and add it to serviced.
+serviced template compile --map=zenoss/zenoss5x,zendev/devimg Zenoss.develop | serviced template add
+
+# Cleanup the template's source.
+rm -Rf Zenoss.develop

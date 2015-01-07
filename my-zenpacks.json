@@ -1,0 +1,24 @@
+{
+    "repos": {
+        "zenpacks/ZenPacks.zenoss.ZenJMX": {
+            "repo": "zenoss/ZenPacks.zenoss.ZenJMX",
+            "ref": "develop"
+        },
+        "zenpacks/ZenPacks.zenoss.PythonCollector": {
+            "repo": "zenoss/ZenPacks.zenoss.PythonCollector",
+            "ref": "develop"
+        },
+        "zenpacks/ZenPacks.zenoss.DynamicView": {
+            "repo": "zenoss/ZenPacks.zenoss.DynamicView",
+            "ref": "develop"
+        },
+        "zenpacks/ZenPacks.zenoss.CalculatedPerformance": {
+            "repo": "zenoss/ZenPacks.zenoss.CalculatedPerformance",
+            "ref": "develop"
+        },
+        "zenpacks/ZenPacks.zenoss.CiscoUCS": {
+            "repo": "zenoss/ZenPacks.zenoss.CiscoUCS",
+            "ref": "develop"
+        }
+    }
+}
