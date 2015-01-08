@@ -32,7 +32,8 @@ Blow away serviced configuration and start.
 
 Add host to pool.
 
-	serviced host add 172.17.42.1:4979 default
+	export ETH0_IP=$(ip addr show eth0 | grep -Po 'inet \K[\d.]+')
+	serviced host add $ETH0_IP:4979 default
 
 Create and add Zenoss.develop application template.
 
